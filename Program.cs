@@ -1,9 +1,5 @@
 ﻿var builder = WebApplication.CreateBuilder(args);
 
-// Railway PORT configuration
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
-
 // Services
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
