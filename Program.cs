@@ -1,10 +1,8 @@
 ﻿var builder = WebApplication.CreateBuilder(args);
 
-// 🔥 RAILWAY FIX – MUST
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+// ✅ DO NOT SET PORT OR URL MANUALLY ON RAILWAY
+// Railway automatically provides ASPNETCORE_URLS
 
-// Services
 builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
@@ -22,11 +20,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// 🔥 Swagger ENABLE in Production
+// ✅ Swagger ENABLED in production
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// ❌ DO NOT use HTTPS redirection on Railway
+// ❌ Do NOT use HTTPS redirection on Railway
 // app.UseHttpsRedirection();
 
 app.UseCors("AllowAll");
